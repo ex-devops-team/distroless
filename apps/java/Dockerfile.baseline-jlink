@@ -1,0 +1,33 @@
+# syntax=docker/dockerfile:1
+FROM maven:3.9.9-eclipse-temurin-21 AS quality
+WORKDIR /src
+COPY pom.xml .
+COPY src ./src
+RUN mvn -B -q spotless:apply spotless:check test
+RUN touch /quality.ok
+
+FROM maven:3.9.9-eclipse-temurin-21 AS build
+WORKDIR /src
+COPY pom.xml .
+COPY src ./src
+COPY --from=quality /quality.ok /quality.ok
+RUN mvn -B -q -DskipTests package
+
+# jlink собирается в build-stage JDK; финальный runtime — Debian 12 (как distroless-jlink).
+FROM eclipse-temurin:21-jdk AS jre
+COPY jlink-jre.sh /jlink-jre.sh
+COPY --from=build /src/target/health-0.0.1-SNAPSHOT.jar /app.jar
+RUN chmod +x /jlink-jre.sh && /jlink-jre.sh /app.jar /jre
+
+FROM debian:bookworm-slim
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+ENV JAVA_HOME=/jre
+ENV PATH="/jre/bin:${PATH}"
+WORKDIR /app
+COPY --from=jre /jre /jre
+COPY --from=build /src/target/health-0.0.1-SNAPSHOT.jar /app/app.jar
+USER nobody
+EXPOSE 8080
+ENTRYPOINT ["/jre/bin/java", "-jar", "/app/app.jar"]

@@ -1,0 +1,25 @@
+# syntax=docker/dockerfile:1
+# Distroless python3-debian12 ships CPython 3.11 — aligned with baseline Dockerfile.baseline.
+FROM python:3.11-slim-bookworm AS quality
+WORKDIR /app
+COPY pyproject.toml ruff.toml ./
+RUN pip install --no-cache-dir ".[dev]"
+COPY main.py test_main.py ./
+RUN ruff check .
+RUN pytest -q
+RUN touch /quality.ok
+
+FROM python:3.11-slim-bookworm AS build
+WORKDIR /app
+COPY pyproject.toml ./
+RUN pip install --no-cache-dir --target=/deps .
+COPY main.py ./
+COPY --from=quality /quality.ok /quality.ok
+
+FROM gcr.io/distroless/python3-debian12:nonroot
+WORKDIR /app
+ENV PYTHONPATH=/deps
+COPY --from=build /deps /deps
+COPY --from=build /app/main.py /app/main.py
+EXPOSE 8080
+CMD ["-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]

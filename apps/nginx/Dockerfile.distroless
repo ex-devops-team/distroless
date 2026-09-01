@@ -1,0 +1,24 @@
+# syntax=docker/dockerfile:1
+# Distroless static file server (nginx-compatible role for the experiment).
+# True nginx binary is not available as official Google Distroless; we use a
+# minimal static Go file server on distroless/static-debian12 for the pair.
+FROM golang:1.22-bookworm AS quality
+WORKDIR /src
+COPY staticserver/go.mod ./
+COPY staticserver/main.go ./
+RUN go vet ./...
+RUN CGO_ENABLED=0 go build -o /tmp/check .
+RUN touch /quality.ok
+
+FROM golang:1.22-bookworm AS build
+WORKDIR /src
+COPY staticserver/go.mod ./
+COPY staticserver/main.go ./
+COPY --from=quality /quality.ok /quality.ok
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o /out/staticserver .
+
+FROM gcr.io/distroless/static-debian12:nonroot
+COPY --from=build /out/staticserver /staticserver
+COPY html/ /html/
+EXPOSE 8080
+ENTRYPOINT ["/staticserver"]

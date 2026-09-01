@@ -1,0 +1,9 @@
+reports/raw/
+*.pyc
+__pycache__/
+node_modules/
+apps/go/health
+apps/java/*.class
+apps/java/out/
+apps/java/target/
+.DS_Store
