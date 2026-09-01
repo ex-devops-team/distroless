@@ -1,10 +1,10 @@
 # Distroless runtime benchmark report
 
-- **UTC:** 2026-08-25T13:39:41Z
-- **Run ID:** `20260825T133941Z`
+- **UTC:** 2026-09-01T10:31:48Z
+- **Run ID:** `20260901T103148Z`
 - **Platform:** `linux/amd64`
 - **Size metric:** docker local Size (bytes from docker image inspect)
-- **Grype:** Application:         grype Version:             0.117.0
+- **Grype:** Application:         grype Version:             0.118.0
 
 ## Size: OS vs application (heuristic)
 
@@ -13,9 +13,9 @@
 | Language | OS baseline | OS distroless | Application | Total baseline | Total distroless | Notes |
 |----------|-------------|---------------|-------------|----------------|------------------|-------|
 | go | 26.2 | 0.0 | 3.5 | 29.8 | 3.5 |  |
-| python | 29.4 | 0.0 | 29.6 | 58.9 | 29.6 |  |
-| java | 48.2 | 0.0 | 64.7 | 112.9 | 64.7 | comparable pair = baseline-jlink vs distroless-jlink; full JRE — в секции Java 2×2 |
-| nodejs | 27.5 | 0.0 | 50.8 | 78.3 | 50.8 |  |
+| python | 31.8 | 0.0 | 29.6 | 61.3 | 29.6 |  |
+| java | 21.5 | 0.0 | 64.7 | 86.2 | 64.7 | comparable pair = baseline-jlink vs distroless-jlink; full JRE — в секции Java 2×2 |
+| nodejs | 27.1 | 0.0 | 50.8 | 77.9 | 50.8 |  |
 | nginx | 66.3 | 0.0 | 2.8 | 69.0 | 2.8 | nginx vs Go file server — Application/size distroless другой бинарь |
 
 ## Java: full JRE vs jlink (2×2)
@@ -26,20 +26,20 @@
 
 | | full JRE | jlink | Δ full→jlink |
 |---|----------|-------|--------------|
-| baseline | 127.3 | 112.9 | -14.4 |
+| baseline | 98.7 | 86.2 | -12.5 |
 | distroless | 78.0 | 64.7 | -13.3 |
-| Δ baseline→distroless | -49.2 | -48.2 |  |
+| Δ baseline→distroless | -20.7 | -21.5 |  |
 
-- Комбо (full baseline → jlink distroless): -62.5 MB
+- Комбо (full baseline → jlink distroless): -34.0 MB
 
 ### CVE (Crit/High/Med/Low) и OS/app totals
 
 | | full JRE | jlink |
 |---|----------|-------|
-| baseline C/H/M/L | 4/25/174/35 | 4/25/174/35 |
-| distroless C/H/M/L | 5/40/63/40 | 5/24/30/27 |
-| baseline OS/app/total | os=167 app=71 total=238 | os=167 app=71 total=238 |
-| distroless OS/app/total | os=85 app=66 total=151 | os=22 app=66 total=88 |
+| baseline C/H/M/L | 11/44/94/82 | 11/44/94/82 |
+| distroless C/H/M/L | 5/40/65/41 | 5/26/32/27 |
+| baseline OS/app/total | os=191 app=66 total=257 | os=191 app=66 total=257 |
+| distroless OS/app/total | os=91 app=66 total=157 | os=29 app=66 total=95 |
 
 - jlink *может* убрать CVE неиспользуемых модулей JDK; CVE fat jar (app) обычно те же; OS CVE: baseline full и baseline-jlink делят Temurin OS (сравниваем jlink); distroless full = java21, distroless-jlink = cc — OS разный; CVE fat jar обычно те же.
 
@@ -83,7 +83,7 @@ Spring Boot layer groups + Docker layers на `distroless-jlink`. Цель — s
 
 ### time-to-healthy (median)
 
-- fat: **5.265** s; layered: **5.242** s (N=3, шум Docker Desktop возможен).
+- fat: **5.3** s; layered: **5.243** s (N=3, шум Docker Desktop возможен).
 - wall clock docker run → HTTP 200 /health; noisy on Docker Desktop
 
 ## CVE: OS vs application
@@ -92,34 +92,33 @@ Spring Boot layer groups + Docker layers на `distroless-jlink`. Цель — s
 
 | Language | Slice | Crit | High | Med | Low | Unknown |
 |----------|-------|------|------|-----|-----|---------|
-| go | OS baseline | 7 | 17 | 61 | 66 | — |
+| go | OS baseline | 7 | 17 | 63 | 66 | — |
 | go | OS distroless | 0 | 0 | 0 | 0 | — |
 | go | Application | 2 | 15 | 11 | 1 | — |
-| go | Total baseline | 9 | 32 | 72 | 67 | 0 |
+| go | Total baseline | 9 | 32 | 74 | 67 | 0 |
 | go | Total distroless | 2 | 15 | 11 | 1 | 0 |
-| python | OS baseline | 8 | 25 | 78 | 90 | — |
-| python | OS distroless | 3 | 54 | 102 | 71 | — |
-| python | Application (baseline) | 0 | 3 | 7 | 2 | — |
+| python | OS baseline | 8 | 29 | 83 | 91 | — |
+| python | OS distroless | 3 | 56 | 107 | 74 | — |
+| python | Application (baseline) | 0 | 5 | 8 | 2 | — |
 | python | Application (distroless) | 0 | 3 | 3 | 1 | — |
-| python | Total baseline | 8 | 28 | 85 | 92 | 0 |
-| python | Total distroless | 3 | 57 | 105 | 72 | 0 |
-| java | OS baseline | 0 | 0 | 146 | 21 | — |
-| java | OS distroless | 1 | 3 | 3 | 13 | — |
-| java | Application (baseline) | 4 | 25 | 28 | 14 | — |
-| java | Application (distroless) | 4 | 21 | 27 | 14 | — |
-| java | Total baseline | 4 | 25 | 174 | 35 | 0 |
-| java | Total distroless | 5 | 24 | 30 | 27 | 0 |
-| nodejs | OS baseline | 7 | 17 | 61 | 66 | — |
-| nodejs | OS distroless | 3 | 18 | 6 | 14 | — |
-| nodejs | Application (baseline) | 1 | 9 | 9 | 2 | — |
-| nodejs | Application (distroless) | 0 | 7 | 10 | 8 | — |
-| nodejs | Total baseline | 8 | 26 | 70 | 68 | 0 |
-| nodejs | Total distroless | 3 | 25 | 16 | 22 | 0 |
-| nginx | OS baseline | 30 | 151 | 183 | 145 | — |
+| python | Total baseline | 8 | 34 | 91 | 93 | 0 |
+| python | Total distroless | 3 | 59 | 110 | 75 | 0 |
+| java | OS baseline | 7 | 23 | 67 | 68 | — |
+| java | OS distroless | 1 | 5 | 5 | 13 | — |
+| java | Application | 4 | 21 | 27 | 14 | — |
+| java | Total baseline | 11 | 44 | 94 | 82 | 0 |
+| java | Total distroless | 5 | 26 | 32 | 27 | 0 |
+| nodejs | OS baseline | 9 | 43 | 86 | 73 | — |
+| nodejs | OS distroless | 3 | 20 | 8 | 14 | — |
+| nodejs | Application (baseline) | 3 | 37 | 15 | 3 | — |
+| nodejs | Application (distroless) | 0 | 7 | 11 | 7 | — |
+| nodejs | Total baseline | 12 | 80 | 101 | 76 | 0 |
+| nodejs | Total distroless | 3 | 27 | 19 | 21 | 0 |
+| nginx | OS baseline | 31 | 155 | 185 | 147 | — |
 | nginx | OS distroless | 0 | 0 | 0 | 0 | — |
 | nginx | Application (baseline) | 0 | 0 | 0 | 0 | — |
 | nginx | Application (distroless) | 2 | 13 | 9 | 1 | — |
-| nginx | Total baseline | 30 | 151 | 183 | 145 | 0 |
+| nginx | Total baseline | 31 | 155 | 185 | 147 | 0 |
 | nginx | Total distroless | 2 | 13 | 9 | 1 | 0 |
 
 ## Matrix (smoke / tags)
@@ -157,19 +156,19 @@ _None — all matrix rows produced successful measurements._
 
 ## Raw artifacts
 
-- Meta: `meta-20260825T133941Z.json`
-- `result-go-baseline-20260825T133941Z.json`
-- `result-go-distroless-20260825T133941Z.json`
-- `result-python-baseline-20260825T133941Z.json`
-- `result-python-distroless-20260825T133941Z.json`
-- `result-java-baseline-20260825T133941Z.json`
-- `result-java-distroless-20260825T133941Z.json`
-- `result-java-baseline-jlink-20260825T133941Z.json`
-- `result-java-distroless-jlink-20260825T133941Z.json`
-- `result-java-distroless-jlink-layered-20260825T133941Z.json`
-- `result-java2-distroless-jlink-20260825T133941Z.json`
-- `result-java2-distroless-jlink-layered-20260825T133941Z.json`
-- `result-nodejs-baseline-20260825T133941Z.json`
-- `result-nodejs-distroless-dynamic-20260825T133941Z.json`
-- `result-nginx-baseline-20260825T133941Z.json`
-- `result-nginx-distroless-20260825T133941Z.json`
+- Meta: `meta-20260901T103148Z.json`
+- `result-go-baseline-20260901T103148Z.json`
+- `result-go-distroless-20260901T103148Z.json`
+- `result-python-baseline-20260901T103148Z.json`
+- `result-python-distroless-20260901T103148Z.json`
+- `result-java-baseline-20260901T103148Z.json`
+- `result-java-distroless-20260901T103148Z.json`
+- `result-java-baseline-jlink-20260901T103148Z.json`
+- `result-java-distroless-jlink-20260901T103148Z.json`
+- `result-java-distroless-jlink-layered-20260901T103148Z.json`
+- `result-java2-distroless-jlink-20260901T103148Z.json`
+- `result-java2-distroless-jlink-layered-20260901T103148Z.json`
+- `result-nodejs-baseline-20260901T103148Z.json`
+- `result-nodejs-distroless-dynamic-20260901T103148Z.json`
+- `result-nginx-baseline-20260901T103148Z.json`
+- `result-nginx-distroless-20260901T103148Z.json`
