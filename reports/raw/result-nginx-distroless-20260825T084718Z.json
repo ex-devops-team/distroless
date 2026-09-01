@@ -1,0 +1,48 @@
+{
+  "language": "nginx",
+  "variant": "distroless",
+  "image": "distroless-bench/nginx:distroless",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.distroless",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 2903351,
+  "cve": {
+    "critical": 2,
+    "high": 13,
+    "medium": 9,
+    "low": 1,
+    "unknown": 0,
+    "total_matches": 25,
+    "breakdown": {
+      "os": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0
+      },
+      "app": {
+        "critical": 2,
+        "high": 13,
+        "medium": 9,
+        "low": 1,
+        "unknown": 0,
+        "total": 25
+      },
+      "unknown": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0
+      }
+    }
+  },
+  "error": null,
+  "run_id": "20260825T084718Z",
+  "success_measurement": true,
+  "comparable": true
+}

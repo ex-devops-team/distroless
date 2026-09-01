@@ -1,0 +1,48 @@
+{
+  "language": "nginx",
+  "variant": "baseline",
+  "image": "distroless-bench/nginx:baseline",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.baseline",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 72399745,
+  "cve": {
+    "critical": 30,
+    "high": 151,
+    "medium": 183,
+    "low": 145,
+    "unknown": 24,
+    "total_matches": 533,
+    "breakdown": {
+      "os": {
+        "critical": 30,
+        "high": 151,
+        "medium": 183,
+        "low": 145,
+        "unknown": 24,
+        "total": 533
+      },
+      "app": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0
+      },
+      "unknown": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0
+      }
+    }
+  },
+  "error": null,
+  "run_id": "20260825T123057Z",
+  "success_measurement": true,
+  "comparable": true
+}

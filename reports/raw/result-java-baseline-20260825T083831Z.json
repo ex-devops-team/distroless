@@ -1,0 +1,22 @@
+{
+  "language": "java",
+  "variant": "baseline",
+  "image": "distroless-bench/java:baseline",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.baseline",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 133447966,
+  "cve": {
+    "critical": 4,
+    "high": 25,
+    "medium": 174,
+    "low": 35,
+    "unknown": 0,
+    "total_matches": 238
+  },
+  "error": null,
+  "run_id": "20260825T083831Z",
+  "success_measurement": true,
+  "comparable": true
+}

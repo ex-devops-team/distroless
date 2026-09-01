@@ -1,0 +1,22 @@
+{
+  "language": "java",
+  "variant": "distroless",
+  "image": "distroless-bench/java:distroless",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.distroless",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 63193047,
+  "cve": {
+    "critical": 1,
+    "high": 19,
+    "medium": 36,
+    "low": 26,
+    "unknown": 3,
+    "total_matches": 85
+  },
+  "error": null,
+  "run_id": "20260825T074629Z",
+  "success_measurement": true,
+  "comparable": true
+}

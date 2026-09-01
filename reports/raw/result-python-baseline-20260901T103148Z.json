@@ -1,0 +1,48 @@
+{
+  "language": "python",
+  "variant": "baseline",
+  "image": "distroless-bench/python:baseline",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.baseline",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 64282122,
+  "cve": {
+    "critical": 8,
+    "high": 34,
+    "medium": 91,
+    "low": 93,
+    "unknown": 26,
+    "total_matches": 252,
+    "breakdown": {
+      "os": {
+        "critical": 8,
+        "high": 29,
+        "medium": 83,
+        "low": 91,
+        "unknown": 26,
+        "total": 237
+      },
+      "app": {
+        "critical": 0,
+        "high": 5,
+        "medium": 8,
+        "low": 2,
+        "unknown": 0,
+        "total": 15
+      },
+      "unknown": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0
+      }
+    }
+  },
+  "error": null,
+  "run_id": "20260901T103148Z",
+  "success_measurement": true,
+  "comparable": true
+}

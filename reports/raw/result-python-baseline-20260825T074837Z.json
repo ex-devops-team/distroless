@@ -1,0 +1,22 @@
+{
+  "language": "python",
+  "variant": "baseline",
+  "image": "distroless-bench/python:baseline",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.baseline",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 43212299,
+  "cve": {
+    "critical": 7,
+    "high": 26,
+    "medium": 52,
+    "low": 54,
+    "unknown": 5,
+    "total_matches": 144
+  },
+  "error": null,
+  "run_id": "20260825T074837Z",
+  "success_measurement": true,
+  "comparable": true
+}

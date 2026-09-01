@@ -1,0 +1,22 @@
+{
+  "language": "nodejs",
+  "variant": "distroless-static",
+  "image": "distroless-bench/nodejs:distroless-static",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.distroless-static",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 52258133,
+  "cve": {
+    "critical": 1,
+    "high": 3,
+    "medium": 3,
+    "low": 13,
+    "unknown": 2,
+    "total_matches": 22
+  },
+  "error": null,
+  "run_id": "20260825T074335Z",
+  "success_measurement": true,
+  "comparable": null
+}

@@ -1,0 +1,48 @@
+{
+  "language": "go",
+  "variant": "distroless",
+  "image": "distroless-bench/go:distroless",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.distroless",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 3701633,
+  "cve": {
+    "critical": 2,
+    "high": 15,
+    "medium": 11,
+    "low": 1,
+    "unknown": 0,
+    "total_matches": 29,
+    "breakdown": {
+      "os": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0
+      },
+      "app": {
+        "critical": 2,
+        "high": 15,
+        "medium": 11,
+        "low": 1,
+        "unknown": 0,
+        "total": 29
+      },
+      "unknown": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0
+      }
+    }
+  },
+  "error": null,
+  "run_id": "20260901T103148Z",
+  "success_measurement": true,
+  "comparable": true
+}

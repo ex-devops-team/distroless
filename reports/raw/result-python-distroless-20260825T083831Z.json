@@ -1,0 +1,22 @@
+{
+  "language": "python",
+  "variant": "distroless",
+  "image": "distroless-bench/python:distroless",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.distroless",
+  "build_ok": true,
+  "smoke_ok": false,
+  "size_bytes": 31623247,
+  "cve": {
+    "critical": null,
+    "high": null,
+    "medium": null,
+    "low": null,
+    "unknown": null,
+    "total_matches": null
+  },
+  "error": "smoke HTTP /health failed",
+  "run_id": "20260825T083831Z",
+  "success_measurement": false,
+  "comparable": true
+}

@@ -1,0 +1,48 @@
+{
+  "language": "go",
+  "variant": "baseline",
+  "image": "distroless-bench/go:baseline",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.baseline",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 31218544,
+  "cve": {
+    "critical": 9,
+    "high": 32,
+    "medium": 72,
+    "low": 67,
+    "unknown": 18,
+    "total_matches": 198,
+    "breakdown": {
+      "os": {
+        "critical": 7,
+        "high": 17,
+        "medium": 61,
+        "low": 66,
+        "unknown": 18,
+        "total": 169
+      },
+      "app": {
+        "critical": 2,
+        "high": 15,
+        "medium": 11,
+        "low": 1,
+        "unknown": 0,
+        "total": 29
+      },
+      "unknown": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0
+      }
+    }
+  },
+  "error": null,
+  "run_id": "20260825T114237Z",
+  "success_measurement": true,
+  "comparable": true
+}

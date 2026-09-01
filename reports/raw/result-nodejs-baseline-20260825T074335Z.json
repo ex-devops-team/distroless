@@ -1,0 +1,22 @@
+{
+  "language": "nodejs",
+  "variant": "baseline",
+  "image": "distroless-bench/nodejs:baseline",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.baseline",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 80411715,
+  "cve": {
+    "critical": 8,
+    "high": 25,
+    "medium": 68,
+    "low": 66,
+    "unknown": 18,
+    "total_matches": 185
+  },
+  "error": null,
+  "run_id": "20260825T074335Z",
+  "success_measurement": true,
+  "comparable": false
+}

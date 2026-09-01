@@ -1,0 +1,48 @@
+{
+  "language": "java2",
+  "variant": "distroless-jlink",
+  "image": "distroless-bench/java2:distroless-jlink",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.distroless-jlink",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 67867828,
+  "cve": {
+    "critical": 5,
+    "high": 26,
+    "medium": 32,
+    "low": 27,
+    "unknown": 5,
+    "total_matches": 95,
+    "breakdown": {
+      "os": {
+        "critical": 1,
+        "high": 5,
+        "medium": 5,
+        "low": 13,
+        "unknown": 5,
+        "total": 29
+      },
+      "app": {
+        "critical": 4,
+        "high": 21,
+        "medium": 27,
+        "low": 14,
+        "unknown": 0,
+        "total": 66
+      },
+      "unknown": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0
+      }
+    }
+  },
+  "error": null,
+  "run_id": "20260901T103148Z",
+  "success_measurement": true,
+  "comparable": null
+}

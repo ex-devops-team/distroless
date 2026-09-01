@@ -1,0 +1,48 @@
+{
+  "language": "java",
+  "variant": "baseline-jlink",
+  "image": "distroless-bench/java:baseline-jlink",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.baseline-jlink",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 173485752,
+  "cve": {
+    "critical": 4,
+    "high": 25,
+    "medium": 174,
+    "low": 35,
+    "unknown": 0,
+    "total_matches": 238,
+    "breakdown": {
+      "os": {
+        "critical": 0,
+        "high": 0,
+        "medium": 146,
+        "low": 21,
+        "unknown": 0,
+        "total": 167
+      },
+      "app": {
+        "critical": 4,
+        "high": 25,
+        "medium": 28,
+        "low": 14,
+        "unknown": 0,
+        "total": 71
+      },
+      "unknown": {
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0
+      }
+    }
+  },
+  "error": null,
+  "run_id": "20260825T120858Z",
+  "success_measurement": true,
+  "comparable": null
+}

@@ -1,0 +1,22 @@
+{
+  "language": "python",
+  "variant": "distroless",
+  "image": "distroless-bench/python:distroless",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.distroless",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 19690772,
+  "cve": {
+    "critical": 3,
+    "high": 54,
+    "medium": 102,
+    "low": 71,
+    "unknown": 4,
+    "total_matches": 234
+  },
+  "error": null,
+  "run_id": "20260825T074335Z",
+  "success_measurement": true,
+  "comparable": true
+}

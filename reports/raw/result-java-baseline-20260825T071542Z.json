@@ -1,0 +1,20 @@
+{
+  "language": "java",
+  "variant": "baseline",
+  "image": "distroless-bench/java:baseline",
+  "dockerfile": "Dockerfile.baseline",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 98956944,
+  "cve": {
+    "critical": 0,
+    "high": 0,
+    "medium": 103,
+    "low": 61,
+    "unknown": 0,
+    "total_matches": 164
+  },
+  "error": null,
+  "run_id": "20260825T071542Z",
+  "success_measurement": true
+}

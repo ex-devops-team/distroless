@@ -1,0 +1,22 @@
+{
+  "language": "nodejs",
+  "variant": "distroless-dynamic",
+  "image": "distroless-bench/nodejs:distroless-dynamic",
+  "distro_lineage": "debian12",
+  "dockerfile": "Dockerfile.distroless-dynamic",
+  "build_ok": true,
+  "smoke_ok": true,
+  "size_bytes": 52563710,
+  "cve": {
+    "critical": 3,
+    "high": 24,
+    "medium": 14,
+    "low": 20,
+    "unknown": 2,
+    "total_matches": 63
+  },
+  "error": null,
+  "run_id": "20260825T074837Z",
+  "success_measurement": true,
+  "comparable": true
+}

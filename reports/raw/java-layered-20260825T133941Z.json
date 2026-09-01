@@ -1,0 +1,87 @@
+{
+  "fat_image": "distroless-bench/java:distroless-jlink",
+  "layered_image": "distroless-bench/java:distroless-jlink-layered",
+  "fat_size_bytes": 67867844,
+  "layered_size_bytes": 67823732,
+  "layer_groups": {
+    "groups_bytes": {
+      "dependencies": 20462989,
+      "spring-boot-loader": 400216,
+      "snapshot-dependencies": 0,
+      "application": 5636
+    },
+    "groups_total_bytes": 20868841
+  },
+  "rootfs_compare": {
+    "image_a": "distroless-bench/java:distroless-jlink-layered",
+    "image_b": "distroless-bench/java2:distroless-jlink-layered",
+    "layers_a": 24,
+    "layers_b": 24,
+    "shared_prefix_count": 23,
+    "shared_layer_digests": [
+      "sha256:7223ea1323e8c1159ec17f07d35acc27bdd1cc2bc3ed425b44ef21dac9915db0",
+      "sha256:8fa10c0194df9b7c054c90dbe482585f768a54428fc90a5b78a0066a123b1bba",
+      "sha256:35b5ba6e08cdd034b8d1920f9c7203e5d66f258e1915f164a01de0af14f34710",
+      "sha256:114dde0fefebbca13165d0da9c500a66190e497a82a53dcaabc3172d630be1e9",
+      "sha256:4d049f83d9cf21d1f5cc0e11deaf36df02790d0e60c1a3829538fb4b61685368",
+      "sha256:af5aa97ebe6ce1604747ec1e21af7136ded391bcabe4acef882e718a87c86bcc",
+      "sha256:6f1cdceb6a3146f0ccb986521156bef8a422cdbb0863396f7f751f575ba308f4",
+      "sha256:bd3cdfae1d3fdd83a2231d608969b38b82349777c2fff9a7c12d54f8ac5c9b38",
+      "sha256:4cde6b0bb6f50a5f255eef7b2a42162c661cf776b803225dcac9a659e396bb6b",
+      "sha256:ad51d0769d16ba578106a177987dfe3d2e02c1668c852b795b2f6b024068242a",
+      "sha256:6e7fbcf090d09b73a4aa85f9dce690d0ace73877c150b7c56955487b6e7a822a",
+      "sha256:5904c32f457c96a16c8c68f5ccdf518c8138cd9e5971de9ce6d564fc481af222",
+      "sha256:99847da578ef1f84f359a90a17b0953d2f96d90438e4bcbbf29f5e571d27b558",
+      "sha256:8b8a764c859ed4a4c40f531d96802dc6e9885d12ad868dcb8b31425e6bd75e9a",
+      "sha256:2401c5ea32a75452bc4b02a664c80cf63f197704653926fca19e22e6cbc85652",
+      "sha256:6819a1af097df543d58dc30b51f737e55f3f42a9a04e641f175834a55bf0629c",
+      "sha256:c3abae442368dc447f15c468933843c361f227f5d87b2bb86515b49f40583ed9",
+      "sha256:7095412417d2dce289b77f7a8c632a07c82b707fe43cfef7368c3b65c8d2538a",
+      "sha256:2e689d971951f473d3d1a25e39b9fc2554d8df2a0c852e04df75fc22553961fd",
+      "sha256:6bc8a81ac0584291204ed6b581e1503a724e3e9ca963ff097eae3eec287fe7a5",
+      "sha256:2ba247dd79fe8c8b007ab5b08ae7764db4fa232280308299709fbfee62bb9a11",
+      "sha256:35f478a8b51d66c0a93aa016dffc8b64245bed9ee5c6f510ec34c42853a98c60",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+    ],
+    "diverged_a": [
+      "sha256:99a93426a925a3b20c2aa02e9272854e9952199db61faf02d01c6d1468c9b7b9"
+    ],
+    "diverged_b": [
+      "sha256:6f1dc1fac55d0e114b71d4860a0268237f29ca1513fe8096f6abb12e3d31d32a"
+    ],
+    "dependencies_likely_shared": true
+  },
+  "footprint": {
+    "two_fat_bytes": 135735672,
+    "two_layered_with_shared_model_bytes": 67829368,
+    "naive_two_layered_bytes": 135647490,
+    "shared_runtime_approx_bytes": 67818096,
+    "application_group_bytes": 5636,
+    "dependency_groups_bytes": 20863205,
+    "note": "shared_runtime_approx = size(layered java) \u2212 application group; two_layered_with_shared_model = shared_runtime + 2\u00d7application; assumes identical shared layers between apps (see rootfs_compare)."
+  },
+  "time_to_healthy_sec": {
+    "fat": {
+      "samples": 3,
+      "ok_samples": 3,
+      "values_sec": [
+        6.319,
+        5.265,
+        5.263
+      ],
+      "median_sec": 5.265,
+      "note": "wall clock docker run \u2192 HTTP 200 /health; noisy on Docker Desktop"
+    },
+    "layered": {
+      "samples": 3,
+      "ok_samples": 3,
+      "values_sec": [
+        5.242,
+        5.229,
+        5.273
+      ],
+      "median_sec": 5.242,
+      "note": "wall clock docker run \u2192 HTTP 200 /health; noisy on Docker Desktop"
+    }
+  }
+}

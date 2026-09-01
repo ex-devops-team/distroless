@@ -1,0 +1,9 @@
+{
+  "timestamp_utc": "2026-08-25T08:36:51Z",
+  "run_id": "20260825T083651Z",
+  "platform": "linux/amd64",
+  "grype_version_raw": "Application:         grype\nVersion:             0.117.0\nBuildDate:           2026-08-10T16:05:15Z\nGitCommit:           Homebrew\nGitDescription:      [not provided]\nPlatform:            darwin/arm64\nGoVersion:           go1.26.5\nCompiler:            gc\nSyft Version:        v1.51.0\nSupported DB Schema: 6",
+  "grype_version_summary": "Application:         grype Version:             0.117.0",
+  "grype_db_status_raw": "Path:      /Users/maksimfominov/Library/Caches/grype/db/6/vulnerability.db\nSchema:    v6.1.9\nBuilt:     2026-08-25T06:17:15Z\nFrom:      https://grype.anchore.io/databases/v6/vulnerability-db_v6.1.9_2026-08-25T00:17:00Z_1787638635.tar.zst?checksum=sha256%3Af476f04cced397fe0f217327b0ae4b31b4dd57f41271dd186ebbacc2c547341a\nStatus:    valid",
+  "size_metric": "docker local Size (bytes from docker image inspect)"
+}
